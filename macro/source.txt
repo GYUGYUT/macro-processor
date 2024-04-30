@@ -1,0 +1,17 @@
+addcall macro lab, avg1, avg2, avg3
+Lab:     add   ax,  avg1
+         add   bx,  avg2
+         add   cx,  avg3
+         endm  
+cseg segment 'code'
+     assume cs:cseg, ds:cseg
+     org 100h
+
+start:
+        addcall loop1, 10, 20, 30
+        addcall loop2, 30, 20, 10
+        addcall loop3, 20, 10, 30
+        mov ah,4ch
+        int 21h
+cseg ends
+    end start
